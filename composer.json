@@ -9,6 +9,9 @@
 		"mysql",
 		"belongsTo",
 		"morphTo",
+		"laravel_reserved_0",
+		"laravel_reserved_",
+		"laravel_reserved",
 		"morph-where-has",
 		"where has"
 	],
