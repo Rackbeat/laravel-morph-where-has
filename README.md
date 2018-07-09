@@ -60,3 +60,7 @@ This will correctly query a relation with the type and any queries you've added.
 
 ## Requirements
 * PHP >= 7.1
+
+## Inspiration
+
+Solution based upon work by github@thisdotvoid - modified to fix some common issues.
