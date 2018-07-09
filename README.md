@@ -3,8 +3,6 @@
 Usually, you cant say `whereHas('contact')` if `contact` is a morphTo relationship. This package aims to fix that.
 
 <p align="center"> 
-<a href="https://travis-ci.org/Rackbeat/laravel-morph-where-has"><img src="https://img.shields.io/travis/Rackbeat/laravel-morph-where-has.svg?style=flat-square" alt="Build Status"></a>
-<a href="https://coveralls.io/github/Rackbeat/laravel-morph-where-has"><img src="https://img.shields.io/coveralls/Rackbeat/laravel-morph-where-has.svg?style=flat-square" alt="Coverage"></a>
 <a href="https://packagist.org/packages/rackbeat/laravel-morph-where-has"><img src="https://img.shields.io/packagist/dt/rackbeat/laravel-morph-where-has.svg?style=flat-square" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/rackbeat/laravel-morph-where-has"><img src="https://img.shields.io/packagist/v/rackbeat/laravel-morph-where-has.svg?style=flat-square" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/rackbeat/laravel-morph-where-has"><img src="https://img.shields.io/packagist/l/rackbeat/laravel-morph-where-has.svg?style=flat-square" alt="License"></a>
