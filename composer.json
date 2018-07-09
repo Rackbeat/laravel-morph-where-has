@@ -1,0 +1,57 @@
+{
+	"name": "rackbeat/laravel-morph-where-has",
+	"description": "Fix whereHas for morphTo relations.",
+	"keywords": [
+		"laravel",
+		"database",
+		"eloquent",
+		"bug",
+		"mysql",
+		"belongsTo",
+		"morphTo",
+		"morph-where-has",
+		"where has"
+	],
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Lasse Rafn",
+			"email": "lasserafn@gmail.com"
+		},
+		{
+			"name": "Rackbeat",
+			"email": "open-source@rackbeat.com"
+		}
+	],
+	"require": {
+		"php": ">=7.1",
+		"illuminate/contracts": "^5.5|^5.6",
+		"illuminate/database": "^5.6",
+		"illuminate/support": "^5.5|^5.6"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^7.0",
+		"satooshi/php-coveralls": "^1.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Rackbeat\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\": "tests/"
+		}
+	},
+	"config": {
+		"sort-packages": true
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Rackbeat\\BelongsToMorphServiceProvider"
+			]
+		}
+	}
+}
