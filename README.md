@@ -49,7 +49,7 @@ class Invoice extends Model {
 ### 2. Use whereHas
 
 ``` php 
-$model->whereHas('supplier', function($query) {
+Invoice::whereHas('supplier', function($query) {
     $query->whereName('John Doe');
 })->get();
 ```
