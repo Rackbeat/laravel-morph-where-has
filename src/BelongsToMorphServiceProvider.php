@@ -11,7 +11,7 @@ class BelongsToMorphServiceProvider extends ServiceProvider
 	 * @return void
 	 */
 	public function boot() {
-		MorphTo::macro( 'forClass', function ($class) {
+		MorphTo::macro( 'forClass', function ( $class ) {
 			return BelongsToMorph::build( $this->getParent(), $class, $this->getRelation() );
 		} );
 	}

@@ -2,12 +2,12 @@
 
 namespace Rackbeat;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Arr;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class BelongsToMorph extends BelongsTo
 {
@@ -43,13 +43,13 @@ class BelongsToMorph extends BelongsTo
 	/**
 	 * Define an inverse morph relationship.
 	 *
-	 * @param  Model  $parent
-	 * @param  string $related
-	 * @param  string $name
-	 * @param  string $type
-	 * @param  string $id
-	 * @param  string $otherKey
-	 * @param  string $relation
+	 * @param Model  $parent
+	 * @param string $related
+	 * @param string $name
+	 * @param string $type
+	 * @param string $id
+	 * @param string $otherKey
+	 * @param string $relation
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
@@ -79,9 +79,9 @@ class BelongsToMorph extends BelongsTo
 	/**
 	 * Get the polymorphic relationship columns.
 	 *
-	 * @param  string $name
-	 * @param  string $type
-	 * @param  string $id
+	 * @param string $name
+	 * @param string $type
+	 * @param string $id
 	 *
 	 * @return array
 	 */
@@ -95,9 +95,9 @@ class BelongsToMorph extends BelongsTo
 	/**
 	 * Add the constraints for a relationship query.
 	 *
-	 * @param  \Illuminate\Database\Eloquent\Builder $query
-	 * @param  \Illuminate\Database\Eloquent\Builder $parent
-	 * @param  array|mixed                           $columns
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @param \Illuminate\Database\Eloquent\Builder $parent
+	 * @param array|mixed                           $columns
 	 *
 	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
@@ -126,16 +126,22 @@ class BelongsToMorph extends BelongsTo
 	 *
 	 * Essentially, these queries compare on column names like whereColumn.
 	 *
-	 * @param  \Illuminate\Database\Eloquent\Builder $query
-	 * @param  \Illuminate\Database\Eloquent\Builder $parentQuery
-	 * @param  array|mixed                           $columns
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @param \Illuminate\Database\Eloquent\Builder $parentQuery
+	 * @param array|mixed                           $columns
 	 *
 	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
 	public function getRelationExistenceQuery( Builder $query, Builder $parentQuery, $columns = [ '*' ] ) {
 		$parentTable = $this->getParent()->getTable();
 		$modelTable  = $this->getModel()->getTable();
-		$relationKey = $this->getOwnerKey();
+
+		if ( method_exists( $this, 'getOwnerKeyName' ) ) {
+			// for Laravel 5.8
+			$relationKey = $this->getOwnerKeyName();
+		} else {
+			$relationKey = $this->getOwnerKey();
+		}
 
 		return $query->select( $columns )->whereColumn(
 			"{$parentTable}.{$this->morphId}", '=', "{$modelTable}.{$relationKey}"
