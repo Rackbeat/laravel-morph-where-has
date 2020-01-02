@@ -12,7 +12,7 @@ class BelongsToMorphServiceProvider extends ServiceProvider
 	 */
 	public function boot() {
 		MorphTo::macro( 'forClass', function ( $class ) {
-			return BelongsToMorph::build( $this->getParent(), $class, $this->getRelation() );
+			return BelongsToMorph::build( $this->getParent(), $class, method_exists($this, 'getRelationName') ? $this->getRelationName() : $this->getRelation() );
 		} );
 	}
 }
