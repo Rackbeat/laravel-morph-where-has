@@ -95,13 +95,9 @@ class BelongsToMorph extends BelongsTo
 	/**
 	 * Add the constraints for a relationship query.
 	 *
-	 * @param \Illuminate\Database\Eloquent\Builder $query
-	 * @param \Illuminate\Database\Eloquent\Builder $parent
-	 * @param array|mixed                           $columns
-	 *
 	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
-	public function getRelationQuery( Builder $query, Builder $parent, $columns = [ '*' ] ) {
+	public function getRelationQuery() {
 		$table = $this->getParent()->getTable();
 		$query = parent::getRelationQuery( $query, $parent, $columns );
 
